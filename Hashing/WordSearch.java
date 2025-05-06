@@ -1,11 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
+//  WordSearch performs a search for predefined words within a grid of elements.
+// It checks all 8 directions from every point in the grid for all word lengths ≥ 2.
+// The words found are tracked in a hash table for constant-time access.
 public class WordSearch<T> {
     T[][] grid;
     DeletelessDictionary<Word<T>, Boolean> seen; // maps words to booleans to indicate if they've been found
     String[] directions = { "U", "D", "L", "R", "UL", "UR", "DL", "DR" };
 
+    // initializes the grid and inserts all words from the dictionary
+    //  into the hash table as unseen (false). Then runs the word search.
     public WordSearch(T[][] grid, List<Word<T>> dictionary) {
         this.seen = new ChainingHashTable<>();
         this.grid = grid;
@@ -16,7 +21,6 @@ public class WordSearch<T> {
     }
 
     // if the given word is valid then mark it as seen in the hash table.
-    // this operation should run in constant time.
     private void addIfWord(Word<T> word) {
         if (valid(word)) {
             seen.insert(word, true);
@@ -28,8 +32,6 @@ public class WordSearch<T> {
     }
 
     // returns the number of valid words found in the grid.
-    // this operation should run in linear time in terms of the
-    // size of the data structure.
     public int countWords() {
         int count = 0;
         List<Boolean> vals = seen.getValues();
@@ -42,8 +44,6 @@ public class WordSearch<T> {
     }
 
     // returns the list of valid words found in the grid.
-    // this operation should run in linear time in terms of the
-    // size of the data structure.
     public List<Word<T>> getWords() {
         List<Word<T>> words = new ArrayList<>();
         List<Boolean> vals = seen.getValues();
