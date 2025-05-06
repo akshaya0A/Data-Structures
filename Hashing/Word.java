@@ -77,7 +77,6 @@ public class Word<T> {
         return true;
     }
 
-    // TODO
     public int hashCode() {
         int result = 1;
         for (T element : slice) {
