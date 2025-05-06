@@ -15,7 +15,6 @@ public class WordSearch<T> {
         wordSearch();
     }
 
-    // TODO
     // if the given word is valid then mark it as seen in the hash table.
     // this operation should run in constant time.
     private void addIfWord(Word<T> word) {
@@ -28,7 +27,6 @@ public class WordSearch<T> {
         return seen.contains(word);
     }
 
-    // TODO
     // returns the number of valid words found in the grid.
     // this operation should run in linear time in terms of the
     // size of the data structure.
